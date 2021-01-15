@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/AzureKinectExamples/KinectDemos/GestureDemo/KinectGesturesDemo1.unity
+    guid: 328740b9a2e770948acfac720557b6c7
+  - enabled: 0
+    path: Assets/AzureKinectExamples/KinectDemos/GestureDemo/KinectGesturesDemo2.unity
+    guid: 96c05a3af8eb23a4a8e304ec4808eb8b
+  - enabled: 0
+    path: Assets/AzureKinectExamples/KinectDemos/PoseDetectionDemo/PoseDetectionDemo1.unity
+    guid: 7ab1548f4562a634ca0fb553f7931360
+  - enabled: 1
+    path: Assets/Kinect_Courier/CourierScene.unity
+    guid: 8e0df6cffe270fe4981c4b359cca3c52
+  m_configObjects: {}

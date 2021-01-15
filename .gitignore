@@ -6,6 +6,7 @@ Assets/AssetStoreTools*
 Assets/WSATestCertificate.pfx
 Assets/WSATestCertificate.pfx.meta
 UWP/
+Logs/
 
 # Visual Studio 2015 cache directory
 /.vs/
@@ -27,9 +28,10 @@ UWP/
 cublas64_100.dll
 cudart64_100.dll
 cudnn64_7.dll
-dnm_model_2_0.onnx
+dnn_model_2_0.onnx
 onnxruntime.dll
 vcomp140.dll
+ST-Kinect4Azure-000643192912-depth-640-576.bin
 
 # Unity3D generated meta files
 *.pidb.meta
