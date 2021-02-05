@@ -346,7 +346,7 @@ namespace com.rfilkov.components
 
         public void Update()
         {
-            if(kinectManager == null)
+            if (kinectManager == null)
             {
                 kinectManager = KinectManager.Instance;
             }
@@ -377,7 +377,7 @@ namespace com.rfilkov.components
             {
                 UpdateAvatar(playerId);
             }
-            this.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+            this.transform.position = new Vector3(/*transform.position.x*/0, transform.position.y, 0);
         }
 
 
@@ -1154,11 +1154,11 @@ namespace com.rfilkov.components
             Quaternion newRotation = jointRotation * initialRotations[boneIndex];
             //newRotation = initialRotation * newRotation;
 
-    //		if(offsetNode != null)
-    //		{
-    //			newRotation = offsetNode.transform.rotation * newRotation;
-    //		}
-    //		else
+            //		if(offsetNode != null)
+            //		{
+            //			newRotation = offsetNode.transform.rotation * newRotation;
+            //		}
+            //		else
             if (!externalRootMotion)  // fix by Mathias Parger
             {
                 newRotation = initialRotation * newRotation;
@@ -1231,8 +1231,8 @@ namespace com.rfilkov.components
                 fDistMin = 0f; // fFootDistanceInitial;
             }
 
-//		    Debug.Log (string.Format ("LFootY: {0:F2}, Dist: {1:F2}, RFootY: {2:F2}, Dist: {3:F2}, Min: {4:F2}", leftFoot ? leftFoot.position.y : 0f, fDistLeft,
-//						rightFoot ? rightFoot.position.y : 0f, fDistRight, fDistMin));
+            //		    Debug.Log (string.Format ("LFootY: {0:F2}, Dist: {1:F2}, RFootY: {2:F2}, Dist: {3:F2}, Min: {4:F2}", leftFoot ? leftFoot.position.y : 0f, fDistLeft,
+            //						rightFoot ? rightFoot.position.y : 0f, fDistRight, fDistMin));
 
             return fDistMin;
         }
@@ -1255,8 +1255,8 @@ namespace com.rfilkov.components
             {0, HumanBodyBones.Hips},
             {1, HumanBodyBones.Spine},
             {2, HumanBodyBones.Chest},
-		    {3, HumanBodyBones.Neck},
-    		{4, HumanBodyBones.Head},
+            {3, HumanBodyBones.Neck},
+            {4, HumanBodyBones.Head},
 
             {5, HumanBodyBones.LeftShoulder},
             {6, HumanBodyBones.LeftUpperArm},
@@ -1267,8 +1267,8 @@ namespace com.rfilkov.components
             {10, HumanBodyBones.RightUpperArm},
             {11, HumanBodyBones.RightLowerArm},
             {12, HumanBodyBones.RightHand},
-		
-		    {13, HumanBodyBones.LeftUpperLeg},
+
+            {13, HumanBodyBones.LeftUpperLeg},
             {14, HumanBodyBones.LeftLowerLeg},
             {15, HumanBodyBones.LeftFoot},
 //    		{16, HumanBodyBones.LeftToes},

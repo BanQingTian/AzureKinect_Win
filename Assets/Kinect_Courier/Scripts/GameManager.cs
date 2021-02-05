@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using com.rfilkov.components;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ using UnityEngine;
 public enum PlayerRoleModel
 {
     BlackGirl,
-    CodeMan,
+    Aottman,
 }
 public class GameManager : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     // 当前游戏角色实例
     public GameObject CurRole = null;
 
+    public GameObject AottmanRole = null;
 
     public Transform RoleDatabase;
 
@@ -68,6 +70,8 @@ public class GameManager : MonoBehaviour
     {
         StopCoroutine("StartUpdataPose");
 
+        Debug.Log("-------S2C_UpdatePlayerRole");
+
         PlayerRoleModel role = (PlayerRoleModel)int.Parse(param);
 
         //if (CurRole != null)
@@ -87,24 +91,29 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            CurRole = GameObject.Instantiate(Resources.Load<GameObject>("Model/" + role.ToString()));
+            CurRole = AottmanRole;//GameObject.Instantiate(Resources.Load<GameObject>("Model/" + role.ToString()));
             CurRole.SetActive(true);
             RoleTables[role] = CurRole.gameObject;
         }
 
-        RoleTables[CurPlayerRoleModel].transform.SetParent(RoleDatabase);
-        RoleTables[CurPlayerRoleModel].SetActive(false);
 
-        CurPlayerRoleModel = role;
-        CurRole.transform.SetParent(PoseHelper.transform);
-        CurRole.transform.localPosition = Vector3.zero;
-        CurRole.transform.localRotation = Quaternion.identity;
-        PoseHelper.Init(role);
-
+        if (role != CurPlayerRoleModel)
+        {
+            RoleTables[CurPlayerRoleModel].transform.SetParent(RoleDatabase);
+            RoleTables[CurPlayerRoleModel].SetActive(false);
+            CurPlayerRoleModel = role;
+            CurRole.transform.SetParent(PoseHelper.transform);
+            CurRole.transform.localPosition = Vector3.zero;
+            CurRole.transform.localRotation = Quaternion.identity;
+            PoseHelper.Init(role);
+        }
 
         StartCoroutine("StartUpdataPose");
 
-
+        Debug.Log(role);
         MessageManager.Instance.SendChangeRole((int)role);
+
+
+
     }
 }

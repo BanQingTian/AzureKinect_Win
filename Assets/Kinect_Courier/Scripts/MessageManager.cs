@@ -279,7 +279,8 @@ public class MessageManager
         if (result == ColyseusClientResult.Success)
         {
             Debug.Log("[OnConnectResp success]");
-            SendCreateRoomMsg();
+            //SendCreateRoomMsg();
+            SendRefreshRoomList();
         }
         else
         {
@@ -307,7 +308,7 @@ public class MessageManager
 
         if (result == ColyseusClientResult.Success)
         {
-
+            GameManager.Join = true;
         }
         else
         {
@@ -336,6 +337,7 @@ public class MessageManager
         {
             GameManager.Join = true;
         }
+
         else
         {
             Debug.Log("faild + " + (int)obj);
@@ -383,19 +385,22 @@ public class MessageManager
 
         if (result == ColyseusClientResult.Success)
         {
-            // obj is List<CustomRoomAvailable>
-            //var roomsAvailable = obj as List<CustomRoomAvailable>;
-            ////Debug.Log("OnGetRoomListResp :" + roomsAvailable.Count);
+            //obj is List<CustomRoomAvailable>
+            var roomsAvailable = obj as List<CustomRoomAvailable>;
+            Debug.Log("OnGetRoomListResp :" + roomsAvailable.Count);
 
-            //if (roomsAvailable.Count > 0)
-            //{
-            //    var roomState = JsonUtility.FromJson<RoomState>(roomsAvailable[0].metadata.roomInfo);
-            //    if (roomState.state == 0)
-            //    {
-            //        SendJoinRoomByIdMsg(roomState.roomID);
-            //        GameManager.Instance.JoinRoom = true;
-            //    }
-            //}
+            if (roomsAvailable.Count > 0)
+            {
+                var roomState = JsonUtility.FromJson<RoomState>(roomsAvailable[0].metadata.roomInfo);
+                if (roomState.state == 0)
+                {
+                    SendJoinRoomByIdMsg(roomState.roomID);
+                }
+            }
+            else
+            {
+                SendCreateRoomMsg();
+            }
         }
         else
         {

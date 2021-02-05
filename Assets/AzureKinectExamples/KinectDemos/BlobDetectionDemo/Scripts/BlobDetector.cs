@@ -328,6 +328,7 @@ namespace com.rfilkov.components
 
         void OnRenderObject()
         {
+            Debug.Log(gameObject.name);
             int rectX = (int)foregroundImgRect.xMin;
             //int rectY = (int)foregroundImgRect.yMax;
             int rectY = (int)foregroundImgRect.yMin;
